@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\Bus;
 
-use CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber;
+use App\Shared\Domain\Bus\Event\DomainEventSubscriber;
 use LogicException;
 use ReflectionClass;
 use ReflectionMethod;

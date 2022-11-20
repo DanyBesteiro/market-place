@@ -7,7 +7,7 @@
     <embeddable name="App\Film\Domain\FilmPlace">
         <field
                 name="value"
-                type="int"
+                type="integer"
                 column="place"
         />
     </embeddable>

@@ -4,14 +4,37 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Film\Domain\Film" table="film">
-        <id name="id" type="int" column="id" length="11" />
-
-        <embedded name="date" class="App\Film\Domain\FilmDate" use-column-prefix="false" />
-        <embedded name="duration" class="App\Film\Domain\FilmDuration" use-column-prefix="false" />
-        <embedded name="place" class="App\Film\Domain\FilmPlace" use-column-prefix="false" />
-        <embedded name="producer" class="App\Film\Domain\FilmProducer" use-column-prefix="false" />
-        <embedded name="title" class="App\Film\Domain\FilmTitle" use-column-prefix="false" />
+    <entity name="App\Film\Domain\Film" table="film" repository-class="App\Repository\FilmRepository">
+        <embedded
+                name="id"
+                class="App\Film\Domain\FilmId"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="date"
+                class="App\Film\Domain\FilmDate"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="duration"
+                class="App\Film\Domain\FilmDuration"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="place"
+                class="App\Film\Domain\FilmPlace"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="producer"
+                class="App\Film\Domain\FilmProducer"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="title"
+                class="App\Film\Domain\FilmTitle"
+                use-column-prefix="false"
+        />
     </entity>
 
 </doctrine-mapping>

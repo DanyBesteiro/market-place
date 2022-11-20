@@ -7,7 +7,7 @@
     <embeddable name="App\Film\Domain\FilmDuration">
         <field
                 name="value"
-                type="int"
+                type="integer"
                 column="duration"
         />
     </embeddable>

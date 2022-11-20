@@ -8,10 +8,8 @@ use App\Shared\Domain\Aggregate\AggregateRoot;
 
 final class Film extends AggregateRoot
 {
-    private FilmId $id;
-
     public function __construct(
-        FilmId $id,
+        private readonly FilmId $id,
         private readonly FilmDate $date,
         private readonly FilmDuration $duration,
         private readonly FilmPlace $place,
@@ -19,7 +17,6 @@ final class Film extends AggregateRoot
         private readonly FilmTitle $title
     )
     {
-        $this->id = $id;
     }
 
     public static function create(

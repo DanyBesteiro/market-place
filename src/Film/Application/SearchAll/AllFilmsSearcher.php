@@ -2,15 +2,17 @@
 
 namespace App\Film\Application\SearchAll;
 
+use App\Film\Domain\FilmRepository;
+
 final class AllFilmsSearcher
 {
-    public function __construct()
+    public function __construct(private readonly FilmRepository $filmRepository)
     {
 
     }
 
     public function execute(): array
     {
-        return ['hola desde el searcher'];
+        return $this->filmRepository->searchAll();
     }
 }

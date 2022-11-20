@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace CodelyTv\Shared\Infrastructure\Bus\Event\InMemory;
+namespace App\Shared\Infrastructure\Bus\Event\InMemory;
 
-use CodelyTv\Shared\Domain\Bus\Event\DomainEvent;
-use CodelyTv\Shared\Domain\Bus\Event\EventBus;
-use CodelyTv\Shared\Infrastructure\Bus\CallableFirstParameterExtractor;
+use App\Shared\Domain\Bus\Event\DomainEvent;
+use App\Shared\Domain\Bus\Event\EventBus;
+use App\Shared\Infrastructure\Bus\CallableFirstParameterExtractor;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;
 use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;

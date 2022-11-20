@@ -13,9 +13,6 @@ final class SearchAllFilmsQueryHandler implements QueryHandler
 
     public function __invoke(SearchAllFilmsQuery $query): array
     {
-        return [
-            'searcher' => $this->searcher->execute(),
-            'handler' => 'hola desde el handler'
-        ];
+        return $this->searcher->execute();
     }
 }

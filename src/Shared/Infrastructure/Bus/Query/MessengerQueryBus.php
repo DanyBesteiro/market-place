@@ -11,6 +11,7 @@ use App\Shared\Infrastructure\Bus\CallableFirstParameterExtractor;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;
 use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
@@ -18,24 +19,17 @@ final class MessengerQueryBus implements QueryBus
 {
     private readonly MessageBus $bus;
 
-    public function __construct(iterable $queryHandlers = [])
+    public function __construct(private readonly MessageBusInterface $queryBus)
     {
-        $this->bus = new MessageBus(
-            [
-                new HandleMessageMiddleware(
-                    new HandlersLocator(CallableFirstParameterExtractor::forCallables($queryHandlers))
-                ),
-            ]
-        );
     }
 
-    public function ask(Query $query): ?Response
+    public function ask(Query $query): mixed
     {
         try {
             /** @var HandledStamp $stamp */
-            $stamp = $this->bus->dispatch($query)->last(HandledStamp::class);
+            $envelope = $this->queryBus->dispatch($query);
 
-            return $stamp->getResult();
+            return $envelope->last(HandledStamp::class)?->getResult();
         } catch (NoHandlerForMessageException) {
             throw new QueryNotRegisteredError($query);
         }

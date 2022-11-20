@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use App\Shared\Domain\Bus\Query\QueryBus;
 use App\Shared\Domain\Bus\Query\QueryHandler;
-use App\Shared\Infrastructure\Bus\Query\MessengerQueryBus;
 use App\Shared\Infrastructure\EntryPoint\Controller\Controller;
 
 return function(ContainerConfigurator $container) {
@@ -30,9 +28,5 @@ return function(ContainerConfigurator $container) {
     $services->load(
         'Api\\Shared\\Infrastructure\\Bus\\Query\\',
         '../src/Shared/Infrastructure/Bus/Query/MessengerQueryBus.php'
-    )->args(['@messenger.event.bus']);
-
-    $services->set(MessengerQueryBus::class);
-
-    $services->alias(QueryBus::class, MessengerQueryBus::class);
+    )->args(['@messenger.query.bus']);
 };

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use \App\Controller\Films\AllFilmsGetController;
+use \App\Controller\Films\FilmByIdGetController;
 
 return function (RoutingConfigurator $routes) {
     $routes->add(
@@ -11,4 +12,10 @@ return function (RoutingConfigurator $routes) {
         path: '/'
     )
         ->controller(AllFilmsGetController::class);
+
+    $routes->add(
+        name: 'film_by_id_get',
+        path: '/hola'
+    )
+        ->controller(FilmByIdGetController::class);
 };

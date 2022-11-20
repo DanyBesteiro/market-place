@@ -11,16 +11,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class AllFilmsGetController extends AbstractController
 {
-    public function __construct(
-        private readonly QueryBus $queryBus,
-        private readonly SearchAllFilmsQuery $allFilmsQuery
-    ) {
+    public function __construct(private readonly QueryBus $queryBus)
+    {
     }
 
     public function __invoke(): JsonResponse
     {
-        return new JsonResponse( //['amigo']
-            data: $this->queryBus->ask(query: $this->allFilmsQuery::create())
+        return new JsonResponse(
+            data: $this->queryBus->ask(query: new SearchAllFilmsQuery())
         );
     }
 }
