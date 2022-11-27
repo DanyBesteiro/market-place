@@ -16,7 +16,7 @@ return static function (DoctrineConfig $doctrine, ContainerConfigurator $contain
     $dbal->connection('writer')
         ->driver('pdo_mysql')
         ->serverVersion('5.7')
-        ->url('mysql://db_symf_user:ProbandoCosas_1@127.0.0.1:8889/byl?serverVersion=5.7')
+        ->url('mysql://db_symf_user:useyourpass@127.0.0.1:8889/byl?serverVersion=5.7')
         ->charset('UTF8');
 
     $orm = $doctrine->orm();
