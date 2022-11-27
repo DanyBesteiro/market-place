@@ -11,17 +11,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class FilmByIdGetController extends AbstractController
 {
-    public function __construct(
-        private readonly QueryBus $queryBus,
-        private readonly SearchFilmByIdQuery $searchFilmByIdQuery
-    ) {
+    public function __construct(private readonly QueryBus $queryBus)
+    {
     }
 
-    public function __invoke(): JsonResponse
+    public function __invoke(string $id): JsonResponse
     {
-        //dump($id);
         return new JsonResponse(
-            data: $this->queryBus->ask(query: $this->searchFilmByIdQuery->create('5'))
+            data: $this->queryBus->ask(query:  new SearchFilmByIdQuery($id))
         );
     }
 }

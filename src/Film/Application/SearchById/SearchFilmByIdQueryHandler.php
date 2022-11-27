@@ -1,19 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Film\Application\SearchById;
 
-use App\Film\Domain\Film;
 use App\Shared\Domain\Bus\Query\QueryHandler;
 
 final class SearchFilmByIdQueryHandler implements QueryHandler
 {
-    public function __construct(private readonly FilmByIdSearcher $searcher)
+    public function __construct(private readonly FilmByIdSearcher $filmByIdSearcher)
     {
 
     }
 
-    public function __invoke(SearchFilmByIdQuery $query): Film
+    public function __invoke(SearchFilmByIdQuery $query): array
     {
-        return $this->searcher->execute('5');
+        return $this->filmByIdSearcher->execute($query->id);
     }
 }

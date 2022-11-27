@@ -14,14 +14,16 @@ final class DoctrineFilmRepository extends DoctrineRepository implements FilmRep
         $this->persist($film);
     }
 
-    public function search(FilmId $id): ?Film
+    public function search(FilmId $id): array
     {
-        return $this->repository(Film::class)
+        $result = $this->repository(Film::class)
             ->createQueryBuilder('film')
-            ->where('id = :id')
+            ->where('film.id.value=:id')
             ->setParameter('id', $id->value())
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getArrayResult();
+
+        return $result[0];
     }
 
     public function searchAll(): array

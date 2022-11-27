@@ -18,7 +18,7 @@ final class AllFilmsGetController extends AbstractController
     public function __invoke(): JsonResponse
     {
         return new JsonResponse(
-            data: $this->queryBus->ask(query: new SearchAllFilmsQuery())
+            data: $this->queryBus->ask(query:  new SearchAllFilmsQuery())
         );
     }
 }

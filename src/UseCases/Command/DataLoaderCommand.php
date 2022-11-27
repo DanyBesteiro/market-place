@@ -2,7 +2,7 @@
 
 namespace App\UseCases\Command;
 
-use App\Repository\FilmRepository;
+//use App\Repository\FilmRepository;
 use App\Repository\PersonRepository;
 use App\Repository\PlaceRepository;
 use App\Repository\ProducerRepository;
@@ -20,7 +20,7 @@ final class DataLoaderCommand extends Command
 {
     public function __construct(
         private readonly FilmCreator        $filmCreator,
-        private readonly FilmRepository     $filmRepository,
+        //private readonly FilmRepository     $filmRepository,
         private readonly PeopleInFilmsCreator $peopleInFilmsCreator,
         private readonly PersonCreator      $personCreator,
         private readonly PersonRepository   $personRepository,
@@ -115,9 +115,9 @@ final class DataLoaderCommand extends Command
 
         $producer   = $this->producerRepository->findOneBy(['name' => $producerName]);
         $place      = $this->placeRepository->findOneBy(['name' => $placeName]);
-        $film       = $this->filmRepository->findOneBy(['title' => $title]);
+        //$film       = $this->filmRepository->findOneBy(['title' => $title]);
 
-        if (false !== $date and is_null($film) and !is_null($producer) and !is_null($place)) {
+        //if (false !== $date and is_null($film) and !is_null($producer) and !is_null($place)) {
 
             $this->filmCreator->execute(
                 date: $date,
@@ -126,7 +126,7 @@ final class DataLoaderCommand extends Command
                 producer: $producer->getId(),
                 title: $title,
             );
-        }
+        //}
     }
 
     private function insertPeople(
@@ -165,7 +165,7 @@ final class DataLoaderCommand extends Command
         array $writers,
         string $title,
     ): void {
-        $film   = $this->filmRepository->findOneBy(['title' => $title]);
+        $film   = null; //$this->filmRepository->findOneBy(['title' => $title]);
 
         if (!is_null($film)) {
             foreach ($directors as $director) {

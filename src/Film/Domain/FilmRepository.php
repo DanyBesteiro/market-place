@@ -6,10 +6,9 @@ namespace App\Film\Domain;
 
 interface FilmRepository
 {
-
     public function save(Film $film): void;
 
-    public function search(FilmId $id): ?Film;
+    public function search(FilmId $id): array;
 
     public function searchAll(): array;
 }

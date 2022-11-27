@@ -15,7 +15,7 @@ return function (RoutingConfigurator $routes) {
 
     $routes->add(
         name: 'film_by_id_get',
-        path: '/hola'
+        path: '/{id}'
     )
         ->controller(FilmByIdGetController::class);
 };
