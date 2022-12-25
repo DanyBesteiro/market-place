@@ -15,8 +15,15 @@ class AllFilmsGetControllerTest extends WebTestCase
 
     private function whenRequestExecuted(): array
     {
-        $client = static::createClient();
-        return $client->request('GET','/film');
+        $client = self::createClient();
+        //$kernel = $this->createKernel();
+
+        //$client = static::createClient();
+
+        $request = $client->getRequest();
+
+        return $request->get('/film');
+        //return $client->request('GET','/film');
     }
 
     private function thenResponseIsWright(array $result): void

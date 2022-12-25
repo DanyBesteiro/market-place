@@ -16,7 +16,7 @@ return static function (DoctrineConfig $doctrine, ContainerConfigurator $contain
     $dbal->connection('writer')
         ->driver('pdo_mysql')
         ->serverVersion('5.7')
-        ->url('mysql://db_symf_user:useyourpass@127.0.0.1:8889/byl?serverVersion=5.7')
+        ->url('mysql://db_symf_user:ProbandoCosas_1@127.0.0.1:8889/byl?serverVersion=5.7')
         ->charset('UTF8');
 
     $orm = $doctrine->orm();
@@ -31,18 +31,26 @@ return static function (DoctrineConfig $doctrine, ContainerConfigurator $contain
 
 function adminExtracted( EntityManagerConfig $manager): void
 {
-    $aggregates = [
-        'Film',
-        //'People',
-        //'Place',
-        //'Producer'
+    $boundedContexts = [
+        'People' => [
+            'ParticipationType',
+            'PeopleInFilm',
+            'Person',
+        ],
+        'Product' => [
+            'Film',
+            'Producer',
+            'Place',
+        ]
     ];
 
-    foreach ($aggregates as $aggregate){
-        $manager->mapping($aggregate)
-            ->isBundle(false)
-            ->type('xml')
-            ->dir('%kernel.project_dir%/src/'.$aggregate.'/Infrastructure/Persistence/Doctrine')
-            ->prefix('App\\' . $aggregate .'\Domain');
+    foreach ($boundedContexts as $contextName => $aggregates){
+        foreach ($aggregates as $aggregate) {
+            $manager->mapping($aggregate)
+                ->isBundle(false)
+                ->type('xml')
+                ->dir('%kernel.project_dir%/src/'. $contextName.'/' . $aggregate . '/Infrastructure/Persistence/Doctrine')
+                ->prefix('App\\' .$contextName.'\\'. $aggregate . '\Domain');
+        }
     }
 }

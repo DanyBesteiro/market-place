@@ -2,7 +2,7 @@
 
 namespace App\Tests\Controller\Films;
 
-use App\Controller\Films\FilmByIdGetController;
+use App\Controller\Films\FilmByCriteriaGetController;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

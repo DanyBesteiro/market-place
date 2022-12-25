@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace App\Tests\Shared\Infrastructure\Bus\Command;
 
 use App\Shared\Domain\Bus\Command\Command;
-use App\Shared\Infrastructure\Bus\Command\CommandNotRegisteredError;
-use App\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus;
+use App\Shared\Infrastructure\Bus\Command\MessengerCommandNotRegisteredError;
+use App\Shared\Infrastructure\Bus\Command\MessengerCommandBus;
 use App\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Mockery\MockInterface;
 use RuntimeException;
 
 final class InMemorySymfonyCommandBusTest extends UnitTestCase
 {
-    private InMemorySymfonyCommandBus|null $commandBus;
+    private MessengerCommandBus|null $commandBus;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->commandBus = new InMemorySymfonyCommandBus([$this->commandHandler()]);
+        $this->commandBus = new MessengerCommandBus([$this->commandHandler()]);
     }
 
     /** @test */
@@ -33,7 +33,7 @@ final class InMemorySymfonyCommandBusTest extends UnitTestCase
     /** @test */
     public function it_should_raise_an_exception_dispatching_a_non_registered_command(): void
     {
-        $this->expectException(CommandNotRegisteredError::class);
+        $this->expectException(MessengerCommandNotRegisteredError::class);
 
         $this->commandBus->dispatch($this->command());
     }
