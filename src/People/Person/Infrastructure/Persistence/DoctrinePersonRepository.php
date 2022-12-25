@@ -32,6 +32,18 @@ final class DoctrinePersonRepository extends DoctrineRepository implements Perso
         return $result[0];
     }
 
+    public function searchByCriteria(string $criteriaName, string $criteriaValue): ?array
+    {
+        $formattedCriteriaValue = str_replace('\'',"''",$criteriaValue);
+
+        $result = $this->defaultQuery()
+            ->where('person.'.$criteriaName.'.value =\'' .$formattedCriteriaValue.'\'')
+            ->getQuery()
+            ->getArrayResult();
+
+        return $result[0] ?? null;
+    }
+
     public function searchAll(): array
     {
         return $this->defaultQuery()

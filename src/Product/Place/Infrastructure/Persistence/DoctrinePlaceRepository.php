@@ -35,6 +35,18 @@ final class DoctrinePlaceRepository extends DoctrineRepository implements PlaceR
             ->getArrayResult();
     }
 
+    public function searchByCriteria(string $criteriaName, string $criteriaValue): ?array
+    {
+        $formattedCriteriaValue = str_replace('\'',"''",$criteriaValue);
+
+        $result = $this->defaultQuery()
+            ->where('place.'.$criteriaName.'.value =\'' .$formattedCriteriaValue.'\'')
+            ->getQuery()
+            ->getArrayResult();
+
+        return $result[0] ?? null;
+    }
+
     private function defaultQuery(): QueryBuilder
     {
         return $this->repository(  Place::class)

@@ -7,7 +7,7 @@
     <embeddable name="App\People\PeopleInFilm\Domain\PeopleInFilmPersonId">
         <id
                 name="value"
-                type="integer"
+                type="string"
                 column="person_id"
         >
             <generator strategy="NONE"/>

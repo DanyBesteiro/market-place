@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\People\PeopleInFilm\Domain;
 
-use App\Shared\Domain\ValueObject\IntValueObject;
+use App\Shared\Domain\ValueObject\Uuid;
 
-final class PeopleInFilmParticipationTypeId extends IntValueObject
+final class PeopleInFilmParticipationTypeId extends Uuid
 {
 
 }

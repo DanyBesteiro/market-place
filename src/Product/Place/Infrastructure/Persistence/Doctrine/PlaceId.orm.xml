@@ -7,7 +7,7 @@
     <embeddable name="App\Product\Place\Domain\PlaceId">
         <id
                 name="value"
-                type="integer"
+                type="string"
                 column="id"
         >
             <generator strategy="NONE"/>

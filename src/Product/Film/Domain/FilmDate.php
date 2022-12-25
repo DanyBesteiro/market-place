@@ -2,9 +2,9 @@
 
 namespace App\Product\Film\Domain;
 
-use App\Shared\Domain\ValueObject\DateTimeValueObject;
+use App\Shared\Domain\ValueObject\DateTimeOrNullValueObject;
 
-final class FilmDate extends DateTimeValueObject
+final class FilmDate extends DateTimeOrNullValueObject
 {
 
 }

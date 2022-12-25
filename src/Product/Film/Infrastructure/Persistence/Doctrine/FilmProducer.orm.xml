@@ -7,7 +7,7 @@
     <embeddable name="App\Product\Film\Domain\FilmProducer">
         <field
                 name="value"
-                type="integer"
+                type="string"
                 column="producer"
         />
     </embeddable>

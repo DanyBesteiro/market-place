@@ -10,5 +10,7 @@ interface PlaceRepository
 
     public function search(PlaceId $id): array;
 
+    public function searchByCriteria(string $criteriaKey, string $criteriaValue): ?array;
+
     public function searchAll(): array;
 }

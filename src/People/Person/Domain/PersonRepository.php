@@ -10,7 +10,7 @@ interface PersonRepository
 
     public function search(PersonId $id): array;
 
-    //public function searchByName(string $name): array;
+    public function searchByCriteria(string $criteriaName, string $criteriaValue): ?array;
 
     public function searchAll(): array;
 }

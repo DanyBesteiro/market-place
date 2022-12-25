@@ -2,9 +2,9 @@
 
 namespace App\Product\Film\Domain;
 
-use App\Shared\Domain\ValueObject\IntValueObject;
+use App\Shared\Domain\ValueObject\Uuid;
 
-final class FilmId extends IntValueObject
+final class FilmId extends Uuid
 {
 
 }

@@ -7,7 +7,7 @@
     <embeddable name="App\People\ParticipationType\Domain\ParticipationTypeId">
         <id
                 name="value"
-                type="integer"
+                type="string"
                 column="id"
         >
             <generator strategy="NONE"/>

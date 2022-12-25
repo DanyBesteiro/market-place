@@ -9,6 +9,7 @@
                 name="value"
                 type="string"
                 column="death_date"
+                nullable="true"
         />
     </embeddable>
 

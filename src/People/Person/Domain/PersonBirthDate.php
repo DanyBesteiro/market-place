@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\People\Person\Domain;
 
-use App\Shared\Domain\ValueObject\DateTimeValueObject;
+use App\Shared\Domain\ValueObject\DateTimeOrNullValueObject;
 
-final class PersonBirthDate extends DateTimeValueObject
+final class PersonBirthDate extends DateTimeOrNullValueObject
 {
 
 }

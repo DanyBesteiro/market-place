@@ -19,6 +19,6 @@ final class ProducerCreator
 
     public function execute(ProducerId $id, ProducerName $name): void
     {
-        $this->producerRepository->save(new Producer($id, $name));
+        $this->producerRepository->save(Producer::create($id, $name));
     }
 }

@@ -8,12 +8,12 @@ use App\Shared\Domain\Bus\Command\CommandHandler;
 
 final class CreateProducerCommandHandler implements CommandHandler
 {
-    public function __construct(private readonly ProducerCreator $producerCreator)
+    public function __construct(private readonly ProducerCreator $creator)
     {
     }
 
     public function __invoke(CreateProducerCommand $command): void
     {
-        $this->producerCreator->execute($command->id, $command->name);
+        $this->creator->execute($command->id, $command->name);
     }
 }

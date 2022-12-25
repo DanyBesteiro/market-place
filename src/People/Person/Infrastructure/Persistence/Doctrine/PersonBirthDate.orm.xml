@@ -9,6 +9,7 @@
                 name="value"
                 type="datetime"
                 column="birth_date"
+                nullable="true"
         />
     </embeddable>
 
