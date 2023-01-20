@@ -16,7 +16,7 @@ return static function(ContainerConfigurator $container) {
         ->tag('controller.service_arguments');
 
     $services->load(
-        'App\\People\\Person\\',
-        '../../src/People/Person/*'
+        'App\\Person\\Person\\',
+        '../../src/Person/Person/*'
     );
 };

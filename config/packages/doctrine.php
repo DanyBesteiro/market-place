@@ -16,7 +16,7 @@ return static function (DoctrineConfig $doctrine, ContainerConfigurator $contain
     $dbal->connection('writer')
         ->driver('pdo_mysql')
         ->serverVersion('5.7')
-        ->url('mysql://db_symf_user:ProbandoCosas_1@127.0.0.1:8889/byl?serverVersion=5.7')
+        ->url('mysql://daniel_user:daniel_password@127.0.0.1:8889/market_place?serverVersion=5.7')
         ->charset('UTF8');
 
     $orm = $doctrine->orm();
@@ -32,16 +32,16 @@ return static function (DoctrineConfig $doctrine, ContainerConfigurator $contain
 function adminExtracted( EntityManagerConfig $manager): void
 {
     $boundedContexts = [
-        'People' => [
-            'ParticipationType',
-            'PeopleInFilm',
+        'Person' => [
+            //'ParticipationType',
+            //'PeopleInFilm',
             'Person',
         ],
-        'Product' => [
-            'Film',
-            'Producer',
-            'Place',
-        ]
+        'Trolley' => [
+            'ArticleInTrolley',
+            'Trolley',
+            'Shipment',
+        ],
     ];
 
     foreach ($boundedContexts as $contextName => $aggregates){

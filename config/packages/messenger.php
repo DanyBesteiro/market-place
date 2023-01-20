@@ -15,6 +15,8 @@ return static function (FrameworkConfig $framework, ContainerConfigurator $conta
     $queryBus = $messenger->bus('query.bus');
     $eventBus = $messenger->bus('event.bus');
 
+    $eventBus->defaultMiddleware('allow_no_handlers');
+
     $messenger->transport('sync')->dsn('sync://');
 
     $messenger->routing(Command::class)->senders(['sync']);

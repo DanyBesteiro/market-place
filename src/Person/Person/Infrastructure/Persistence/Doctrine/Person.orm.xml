@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Person\Person\Domain\Person" table="person">
+        <embedded
+                name="id"
+                class="App\Person\Person\Domain\PersonId"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="cif"
+                class="App\Person\Person\Domain\PersonCif"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="name"
+                class="App\Person\Person\Domain\PersonName"
+                use-column-prefix="false"
+        />
+        <embedded
+                name="personTypeId"
+                class="App\Person\Person\Domain\PersonTypeId"
+                use-column-prefix="false"
+        />
+    </entity>
+</doctrine-mapping>
